@@ -1,0 +1,77 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/electrolize</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.boton" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/negro</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AppTheme.txtFondoOscuro">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/blanco</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+
+    <style name="AppTheme.txtFondoClaro">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/negro</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/negro</item>
+    </style>
+
+    <style name="spinner" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:radius">10dp</item>
+    </style>
+
+    <style name="tarjetasTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+
+    <style name="tarjetasLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="tvPregunta">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:fontFamily">@font/electrolize</item>
+    </style>
+
+    <style name="tvRespuesta">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#d6d6d6</item>
+        <item name="android:paddingLeft">25dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+    </style>
+
+</resources>

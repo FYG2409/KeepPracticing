@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.PreguntasPorMateriaFragment"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:columnCount="2"
+            android:rowCount="11"
+            android:background="@color/blanco"
+            >
+
+            <LinearLayout
+                android:id="@+id/infinito"
+                android:tag="todas"
+                android:background="@color/color1"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:background="@drawable/infinito_blanco_icon" />
+                <TextView
+                    android:text="@string/infinity"
+                    style="@style/tarjetasTextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fisica"
+                android:tag="Fisica"
+                android:background="@color/color2"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:background="@drawable/icon_fisica"
+                    android:backgroundTint="@color/blanco"
+                    />
+                <TextView
+                    android:text="@string/fisica"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/razMatematico"
+                android:tag="Razonamiento Matematico"
+                android:background="@color/color3"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:background="@drawable/icon_razmat"
+                    android:backgroundTint="@color/blanco"
+                    />
+                <TextView
+                    android:text="@string/razonamiento_matematico"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/algebra"
+                android:tag="Algebra"
+                android:background="@color/color4"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_algebra"/>
+                <TextView
+                    android:text="@string/algebra"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/geoTrigo"
+                android:tag="Geometria y Trigonometria"
+                android:background="@color/color5"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_trigo"/>
+                <TextView
+                    android:text="@string/geometria_y_trigonometria"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/geoAnalitica"
+                android:tag="Geometria Analitica"
+                android:background="@color/color6"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_analitica"/>
+                <TextView
+                    android:text="@string/geometria_analitica"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/calDifIntegral"
+                android:tag="Calculo Diferencial e Integral"
+                android:background="@color/color7"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_integral"/>
+                <TextView
+                    android:text="@string/calculo_diferencial_e_integral"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/probaEstadistica"
+                android:tag="Probabilidad y Estadistica"
+                android:background="@color/color8"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_estadistica"/>
+                <TextView
+                    android:text="@string/probabilidad_y_estadistica"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/prodEscrita"
+                android:tag="Produccion Escrita"
+                android:background="@color/color9"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_escrita"/>
+                <TextView
+                    android:text="@string/produccion_escrita"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/compreTextos"
+                android:tag="Comprension de Textos"
+                android:background="@color/color10"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_textos"/>
+                <TextView
+                    android:text="@string/comprension_de_textos"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/biologia"
+                android:tag="Biologia"
+                android:background="@color/color11"
+                android:layout_marginBottom="30dp"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_biologia"/>
+                <TextView
+                    android:text="@string/biologia"
+                    style="@style/tarjetasTextView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/quimica"
+                android:tag="Quimica"
+                android:background="@color/color12"
+                android:layout_marginBottom="30dp"
+                style="@style/tarjetasLayout"
+                >
+                <ImageView
+                    android:layout_width="match_parent" android:contentDescription="TODO"
+                    android:layout_height="110dp"
+                    android:backgroundTint="@color/blanco"
+                    android:background="@drawable/icon_quimica"/>
+                <TextView
+                    android:text="@string/quimica"
+                    style="@style/tarjetasTextView" />
+            </LinearLayout>
+
+        </GridLayout>
+
+    </ScrollView>
+
+</LinearLayout>

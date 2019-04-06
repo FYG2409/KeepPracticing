@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.IniciaSesionActivity"
+    android:background="@drawable/fondo2"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/negro"
+        android:alpha="0.6"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="40dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:contentDescription="TODO"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/kep_icon_blanco"
+            android:layout_marginBottom="40dp"
+            />
+
+        <EditText
+            android:id="@+id/Correo"
+            android:hint="@string/correo_electronico"
+            android:inputType="textWebEmailAddress"
+            style="@style/AppTheme.txtFondoOscuro"
+            />
+
+        <EditText
+            android:id="@+id/Contraseña"
+            android:hint="@string/contraseña"
+            android:inputType="textPassword"
+            style="@style/AppTheme.txtFondoOscuro"
+            />
+
+        <Button
+            android:id="@+id/Iniciar"
+            android:text="@string/iniciar"
+            style="@style/AppTheme.boton"
+            android:layout_marginTop="40dp"
+            />
+
+        <TextView
+            android:id="@+id/OlvidaC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/olvido_contraseña"
+            android:textColor="@color/blanco"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:onClick="Olvide"
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

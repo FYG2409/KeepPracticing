@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/perfil" android:title=""
+            android:icon="@drawable/kep_icon"
+            />
+        <item
+            android:id="@+id/duelo" android:title=""
+            android:icon="@drawable/duelo_icon"/>
+
+        <item
+            android:id="@+id/ranking" android:title=""
+            android:icon="@drawable/ranking_icon"/>
+        <item
+            android:id="@+id/preguntas"
+            android:icon="@drawable/preguntas_icon"
+            android:title="" />
+        <item
+            android:id="@+id/graficas" android:title=""
+            android:icon="@drawable/graficas_icon"/>
+
+        <item
+            android:id="@+id/cerrarSesion" android:title=""
+            android:icon="@drawable/cerrar_sesion_icon" />
+    </group>
+
+</menu>

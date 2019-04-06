@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.GraficasFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Tit"
+                android:text="GRAFICAS"
+                android:textSize="27dp"
+                />
+            <com.github.mikephil.charting.charts.PieChart
+                android:layout_height="500dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/pieChart">
+            </com.github.mikephil.charting.charts.PieChart>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Graf"
+                android:textSize="25dp"/>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_height="500dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/barChar">
+            </com.github.mikephil.charting.charts.BarChart>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/GrafE"
+                android:textSize="25dp"/>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_height="500dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/barCharError">
+            </com.github.mikephil.charting.charts.BarChart>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

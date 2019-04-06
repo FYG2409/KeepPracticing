@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "797080788206",
+    "firebase_url": "https://keppracticing.firebaseio.com",
+    "project_id": "keppracticing",
+    "storage_bucket": "keppracticing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797080788206:android:587d9676618f3ae0",
+        "android_client_info": {
+          "package_name": "com.freakdeveloper.kep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797080788206-79n7jus3cun5ca3plc2jn6svadspavtq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.freakdeveloper.kep",
+            "certificate_hash": "83afea0233a83a78a69c7f281db4368a57081c4e"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu--XmAU8maNAlq_0PzIh5EEefR4gtMCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797080788206-9bvm02l6si0ve90j7thr76ltj4d3g5o2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

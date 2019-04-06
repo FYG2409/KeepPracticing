@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DueloFragment"
+    android:orientation="vertical"
+    android:background="@drawable/duelo_grande_icon"
+    android:gravity="center"
+    android:padding="40dp"
+    >
+
+    <Button
+        android:id="@+id/btnCreaCodigo"
+        android:text="Crea un Código"
+        style="@style/AppTheme.boton"
+        />
+
+    <Button
+        android:id="@+id/btnTengoCodigo"
+        android:text="Tengo un Código"
+        style="@style/AppTheme.boton"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/edtIngresaCodigo"
+        android:hint="Ingresa Código"
+        android:digits="abcdefghijklmnñopqrstuvxwyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789 "
+        style="@style/AppTheme.txtFondoClaro"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/btnJugar"
+        android:text="Jugar"
+        style="@style/AppTheme.boton"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/btnContraTiempo"
+        android:text="Contra tiempo"
+        android:layout_marginTop="20dp"
+        style="@style/AppTheme.boton"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tvEsperandoOponente"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Esperando oponente..."
+        android:textSize="17dp"
+        android:layout_marginTop="40dp"
+        android:visibility="gone"
+        />
+
+
+
+</LinearLayout>

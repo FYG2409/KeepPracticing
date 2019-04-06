@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.PerfilFragment"
+    android:orientation="vertical"
+    android:background="@color/blanco"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@drawable/fondo2"
+                    android:elevation="40dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/kep_icon_blanco"
+                    android:elevation="50dp"
+                    />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/NickN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50sp"
+                android:text="NicKName:"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                android:gravity=""
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ran" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="50sp"
+                    android:text="Lugar: 84/120"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_height="500dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/barChar">
+            </com.github.mikephil.charting.charts.BarChart>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAjust"
+                android:text="Ajustes"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                android:textColor="@color/negro"
+                android:background="#fef301"
+                android:layout_margin="50sp"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnDelete"
+                android:text="Eliminar Cuenta"
+                android:textAlignment="center"
+                android:background="#fef301"
+                android:textSize="28sp"
+                android:textColor="@color/negro"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="60sp"
+                android:layout_marginRight="60sp"
+                android:layout_marginBottom="60sp"
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
