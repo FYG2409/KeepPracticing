@@ -44,6 +44,7 @@ import java.util.ArrayList;
 public class PreguntasActivity extends AppCompatActivity {
     //PARA ALEATORIO
     private int numAleatorio, totalPreguntas, conta;
+    private ChildEventListener cd;
     private Pregunta preguntaObj;
     private int contaMaterias;
     private Boolean todasMaterias;
@@ -420,7 +421,7 @@ public class PreguntasActivity extends AppCompatActivity {
     }
 
     public void escuchaDuelo(){
-        databaseReference.child(nodoDuelos).child(codigoDuelo).addChildEventListener(new ChildEventListener() {
+        cd = databaseReference.child(nodoDuelos).child(codigoDuelo).addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -432,12 +433,11 @@ public class PreguntasActivity extends AppCompatActivity {
 
             }
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot){
                 conta = conta + 1;
                 if(conta == 1){
                     //LA PERSONA ABANDONO EL DUELO
                     countDownTimer.cancel();
-                    Log.w("AylinT", "Tiempo cancelado x1");
                     LinearLayout marcadores;
                     TextView txtClose, txtMensaje;
                     miVentana.setContentView(R.layout.my_pop_up);
@@ -596,10 +596,14 @@ public class PreguntasActivity extends AppCompatActivity {
             public void onTick(long lon) {
                 tiempoEnMilisegundos = lon;
                 updateTimer();
+                Log.w("AylinT","conta "+conta);
             }
             @Override
             public void onFinish() {
                 //AQUI TERMINA EL TIEMPO
+
+                databaseReference.child(nodoDuelos).child(codigoDuelo).removeEventListener(cd);
+
                 if(tipoPersona.equals("Uno")){
                     databaseReference.child(nodoDuelos).child(codigoDuelo).child("totalBuenasUno").setValue(contaBuenas);
                 }else
