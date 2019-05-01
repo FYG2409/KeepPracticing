@@ -2,7 +2,6 @@ package com.freakdeveloper.kep.model;
 
 public class Pregunta {
 
-
     private String materia;
     private String pregunta;
     private String rA;

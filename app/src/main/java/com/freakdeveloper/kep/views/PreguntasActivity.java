@@ -72,7 +72,7 @@ public class PreguntasActivity extends AppCompatActivity {
     //PARA TIMER
     private TextView countdownText;
     private CountDownTimer countDownTimer;
-    private long tiempoEnMilisegundos = (5*60000); //Son los minutos que queremos en milisegundos
+    private long tiempoEnMilisegundos = (10000); //Son los minutos que queremos en milisegundos
 
     //PARA POP-UP
     private Dialog miVentana;
@@ -436,6 +436,8 @@ public class PreguntasActivity extends AppCompatActivity {
                 conta = conta + 1;
                 if(conta == 1){
                     //LA PERSONA ABANDONO EL DUELO
+                    countDownTimer.cancel();
+                    Log.w("AylinT", "Tiempo cancelado x1");
                     LinearLayout marcadores;
                     TextView txtClose, txtMensaje;
                     miVentana.setContentView(R.layout.my_pop_up);
@@ -608,6 +610,7 @@ public class PreguntasActivity extends AppCompatActivity {
                 verGanador();
             }
         }.start();
+
     }
 
     public void verGanador(){
