@@ -24,6 +24,10 @@
             android:icon="@drawable/graficas_icon"/>
 
         <item
+            android:id="@+id/duda" android:title=""
+            android:icon="@drawable/duda"/>
+
+        <item
             android:id="@+id/cerrarSesion" android:title=""
             android:icon="@drawable/cerrar_sesion_icon" />
     </group>

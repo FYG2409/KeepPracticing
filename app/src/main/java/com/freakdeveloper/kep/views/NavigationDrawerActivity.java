@@ -107,6 +107,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
             FirebaseAuth.getInstance().signOut();
             Intent Menu = new Intent(this, PrincipalActivity.class);
             startActivity(Menu);
+        } else if (id == R.id.duda) {
+            Intent Duda = new Intent(this, DudaActivity.class);
+            startActivity(Duda);
         }
 
 
