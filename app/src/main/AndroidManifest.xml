@@ -31,9 +31,11 @@
         <activity android:name=".views.RegistroActivity" />
         <activity android:name=".views.RegistroCarreraActivity" />
         <activity android:name=".views.RegistroPreguntaActivity" />
+        <!--no esta agregado en strings "@string/title_activity_navigation_drawer"  -->
         <activity
+
             android:name=".views.NavigationDrawerActivity"
-            android:label="@string/title_activity_navigation_drawer"
+            android:label="title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
 
             android:theme="@style/AppTheme.NoActionBar" />
