@@ -4,20 +4,54 @@
     <color name="colorPrimaryDark">#67092D</color>
     <color name="colorAccent">#00CCCD</color>
 
-    <color name="negro">#000000</color>
+    <color name="negro">#161616</color>
     <color name="blanco">#ffffff</color>
+    DFDFDF
+    <color name="grisClaro">#DFDFDF</color>
 
-    <color name="color1">#0056a3</color>
-    <color name="color2">#0891c5</color>
-    <color name="color3">#6b459c</color>
-    <color name="color4">#00a88f</color>
-    <color name="color5">#a54698</color>
-    <color name="color6">#8bfd0a</color>
-    <color name="color7">#e44298</color>
-    <color name="color8">#e2d900</color>
-    <color name="color9">#e71926</color>
-    <color name="color10">#fdc607</color>
-    <color name="color11">#f27120</color>
-    <color name="color12">#f6911f</color>
+
+    <color name="color1">#e60039</color>
+    <color name="color2">#E6006D</color>
+    <color name="color3">#E600B4</color>
+    <color name="color4">#CF00E6</color>
+    <color name="color5">#8600E6</color>
+    <color name="color6">#7300e6</color>
+    <color name="color7">#0054E6</color>
+    <color name="color8">#0073e6</color>
+    <color name="color9">#009DE6</color>
+    <color name="color10">#00E6E6</color>
+    <color name="color11">#00e6ac</color>
+    <color name="color12">#00e673</color>
+
+
+
+    <!--
+    <color name="color1">#E6006D</color>
+    <color name="color2">#E600B4</color>
+    <color name="color3">#CF00E6</color>
+    <color name="color4">#8600E6</color>
+    <color name="color5">#3D00E6</color>
+    <color name="color6">#000BE6</color>
+    <color name="color7">#0054E6</color>
+    <color name="color8">#009DE6</color>
+    <color name="color9">#00E6E6</color>
+    <color name="color10">#00E69D</color>
+    <color name="color11">#00E654</color>
+    <color name="color12">#bfff00</color>
+    -->
+
+    <!--
+    <color name="color1">#E6006D</color>
+    <color name="color2">#E60085</color>
+    <color name="color3">#E6009D</color>
+    <color name="color4">#E600B5</color>
+    <color name="color5">#E600CD</color>
+    <color name="color6">#E600E5</color>
+    <color name="color7">#00D1E6</color>
+    <color name="color8">#00E9E6</color>
+    <color name="color9">#00FFE6</color>
+    <color name="color10">#00FFE6</color>
+    <color name="color11">#00FFFE</color>
+    <color name="color12">#00FFFF</color>-->
 </resources>
 

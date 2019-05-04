@@ -32,7 +32,6 @@
         <activity android:name=".views.RegistroPreguntaActivity" />
         <activity
             android:name=".views.NavigationDrawerActivity"
-            android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.DudaActivity"></activity>
     </application>
