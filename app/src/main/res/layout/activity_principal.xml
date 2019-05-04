@@ -92,6 +92,14 @@
             android:visibility="gone"
             />
 
+        <Button
+            android:id="@+id/RegEnci"
+            style="@style/AppTheme.boton"
+            android:text="REGISTRA Enciclopedia"
+            android:onClick="irAEnciclopedia"
+            android:visibility="gone"
+            />
+
     </LinearLayout>
 
 </RelativeLayout>

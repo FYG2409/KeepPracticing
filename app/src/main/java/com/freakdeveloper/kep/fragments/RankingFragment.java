@@ -3,21 +3,29 @@ package com.freakdeveloper.kep.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Toast;
 import com.freakdeveloper.kep.R;
+import com.freakdeveloper.kep.adapter.RankingAdapterRecyclerView;
+import com.freakdeveloper.kep.model.Persona;
+import com.freakdeveloper.kep.model.Ranking;
+import com.freakdeveloper.kep.model.Respuestas;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RankingFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link RankingFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class RankingFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,19 +38,35 @@ public class RankingFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    //VISTA
+    RecyclerView reclyclerViewR;
+
+    //FIREBASE
+
+    DatabaseReference databaseReference;
+    private FirebaseAuth.AuthStateListener authStateListener;
+    FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
+    private  static final String nodoPersona="Personas";
+    private  static final String nodoRespuestas="Respuestas";
+
+    //VARIABLES
+    private ArrayList<Ranking> Datos=new ArrayList<>();
+    private ArrayList<String> id=new ArrayList<>();
+    String Nick="",Escuela="";
+    int Lugar=0,Num=0;
+    float m;
+    private int[] totales=new int[11];
+    private int[] aciertos=new int[11];
+    private Float[] Punta;
+    private String[] ID;
+    private ArrayList<Float> Pun = new ArrayList<>();
+    private Ranking global=new Ranking();
+
     public RankingFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RankingFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static RankingFragment newInstance(String param1, String param2) {
         RankingFragment fragment = new RankingFragment();
         Bundle args = new Bundle();
@@ -65,8 +89,201 @@ public class RankingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ranking, container, false);
+        View v= inflater.inflate(R.layout.fragment_ranking, container, false);
+
+        reclyclerViewR= (RecyclerView) v.findViewById(R.id.RVidR);
+        reclyclerViewR.setLayoutManager(new LinearLayoutManager(v.getContext() , LinearLayoutManager.VERTICAL , false));
+
+        //Trae Registros
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        databaseReference.child(nodoPersona).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Persona persona = snapshot.getValue(Persona.class);
+                        String xID=persona.getIdPersona();
+                        //carre.add(i, persona.getIdPersona());
+                        if(xID.equals(user.getUid()))
+                        {
+                            Nick=persona.getNickName();
+                            Escuela=persona.getEscingresar();
+                            break;
+                        }
+
+                    }
+                    //Toast.makeText(getContext(), "nick "+Nick+" lugar "+Lugar+" numusu "+Num , Toast.LENGTH_SHORT).show();
+                    /*
+                    for(int j=0;j<i;j++)
+                    {
+                        if(carre.get(j).equals(Escuela))
+                        {
+                            y=y+1;
+                            carreras[y]=carre.get(j);
+                        }
+                    }*/
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        //traeNickName();
+
+        databaseReference.child(nodoRespuestas).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                        Respuestas respuestas = snapshot.getValue(Respuestas.class);
+                        String IDres=snapshot.getKey();
+                        int[] y=new int[2];
+                        aciertos[0]=respuestas.getAlgebra();
+                        totales[0]=respuestas.getTotalAlgebra();
+                        aciertos[1]=respuestas.getBiologia();
+                        totales[1]=respuestas.getTotalBiologia();
+                        aciertos[2]=respuestas.getCalculoDiferencialeIntegral();
+                        totales[2]=respuestas.getTotalCalculoDiferencialeIntegral();
+                        aciertos[3]=respuestas.getComprensiondeTextos();
+                        totales[3]=respuestas.getTotalComprensiondeTextos();
+                        aciertos[4]=respuestas.getFisica();
+                        totales[4]=respuestas.getTotalFisica();
+                        aciertos[5]=respuestas.getGeometriaAnalitica();
+                        totales[5]=respuestas.getTotalGeometriaAnalitica();
+                        aciertos[6]=respuestas.getGeometriayTrigonometria();
+                        totales[6]=respuestas.getTotalGeometriayTrigonometria();
+                        aciertos[7]=respuestas.getProbabilidadyEstadistica();
+                        totales[7]=respuestas.getTotalProbabilidadyEstadistica();
+                        aciertos[8]=respuestas.getProduccionEscrita();
+                        totales[8]=respuestas.getTotalProduccionEscrita();
+                        aciertos[9]=respuestas.getQuimica();
+                        totales[9]=respuestas.getTotalQuimica();
+                        aciertos[10]=respuestas.getRazonamientoMatematico();
+                        totales[10]=respuestas.getTotalRazonamientoMatematico();
+
+                        //y=puntaje();
+
+                        for(int i=0;i<11;i++)
+                        {
+                            y[0]=y[0]+aciertos[i];
+                            y[1]=y[1]+totales[i];
+                        }
+
+                        m=(float)y[0]/(float)y[1];
+
+                        Pun.add(m);
+                        id.add(IDres);
+
+                    }
+
+                    Punta=new Float[Pun.size()];
+                    ID=new String[id.size()];
+                    for(int i=0;i<Pun.size();i++)
+                    {
+                        Punta[i]=Pun.get(i);
+                        ID[i]=id.get(i);
+                    }
+
+                    float aux;
+                    String auxid;
+                    for (int i = 0; i < Punta.length - 1; i++) {
+                        for (int x = i + 1; x < Punta.length; x++) {
+                            if (Punta[x] < Punta[i]) {
+                                aux = Punta[i];
+                                auxid= ID[i];
+                                Punta[i]=Punta[x];
+                                ID[i]=ID[x];
+                                Punta[x]=aux;
+                                ID[x]=auxid;
+                            }
+                        }
+                    }
+                    //ordenarPuntaje();
+
+                    int n=0;
+                    for (int i=0;i<ID.length;i++)
+                    {
+                        n=i;
+                        if(ID[i].equals(user.getUid()))
+                        {
+                            Lugar=n;
+                            break;
+                        }
+                    }
+
+                    //Lugar=obtenLugar();
+                    Num=ID.length;
+                    global.setImagen(R.drawable.mex);
+                    global.setNickName(Nick);
+                    global.setPosicion(Lugar);
+                    global.setNumUsu(Num);
+
+                    Datos.add(global);
+
+                    Ranking escolar=new Ranking(R.drawable.gorro,"Javier",12,34);
+                    Datos.add(escolar);
+
+
+                    RankingAdapterRecyclerView Adap = new RankingAdapterRecyclerView(Datos);
+                    reclyclerViewR.setAdapter(Adap);
+                    Toast.makeText(getContext(), "nick"+Nick+"lugar"+Lugar+"num"+Num, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //Ran();
+
+        //puntajes.length+1
+        //Ranking global2=new Ranking(R.drawable.mex,global.getNickName(),global.getPosicion(),global.getNumUsu());
+
+        /*
+        RanEscolar();
+        //PuntajesE.length+1
+        */
+
+
+        return v;
     }
+
+    private void traeNickName()
+    {
+
+    }
+
+    private void Ran()
+    {
+
+    }
+
+    private int[] puntaje()
+    {
+        int[] x=new int[2];
+
+        return x;
+    }
+    private void ordenarPuntaje() {
+
+    }
+    private int obtenLugar()
+    {
+        int n=0;
+
+
+        return n;
+    }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -92,16 +309,7 @@ public class RankingFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

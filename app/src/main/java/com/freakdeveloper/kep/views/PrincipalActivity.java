@@ -10,7 +10,7 @@ import com.freakdeveloper.kep.R;
 
 public class PrincipalActivity extends AppCompatActivity {
 
-    private Button regPregunta, regCarrera, btnFaq;
+    private Button regPregunta, regCarrera, btnFaq, regEnci;
     private int conta = 0;
 
     @Override
@@ -21,6 +21,7 @@ public class PrincipalActivity extends AppCompatActivity {
         regPregunta = findViewById(R.id.regPregunta);
         regCarrera = findViewById(R.id.regCarrera);
         btnFaq = findViewById(R.id.btnFaq);
+        regEnci= findViewById(R.id.RegEnci);
 
     }
 
@@ -29,11 +30,13 @@ public class PrincipalActivity extends AppCompatActivity {
             regPregunta.setVisibility(View.VISIBLE);
             regCarrera.setVisibility(View.VISIBLE);
             btnFaq.setVisibility(View.VISIBLE);
+            regEnci.setVisibility(View.VISIBLE);
             conta = 1;
         }else if (conta == 1) {
             regPregunta.setVisibility(View.GONE);
             regCarrera.setVisibility(View.GONE);
             btnFaq.setVisibility(View.GONE);
+            regEnci.setVisibility(View.GONE);
             conta = 0;
         }
     }
@@ -66,6 +69,11 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void irARegistraFAQS(View view){
         Intent intent = new Intent(this, RegistrarFaqsActivity.class);
+        startActivity(intent);
+    }
+
+    public void irAEnciclopedia(View view){
+        Intent intent = new Intent(this, RegistroEnciclopediaActivity.class);
         startActivity(intent);
     }
 }
