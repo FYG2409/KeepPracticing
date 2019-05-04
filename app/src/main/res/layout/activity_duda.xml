@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.DudaActivity"
+    android:orientation="vertical"
+    android:background="#232323"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="¿...?"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:autoSizeTextType="uniform"
+        android:textStyle="bold"
+        android:padding="20dp"
+        android:textColor="@color/blanco"
+        />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:textAlignment="center"
+        android:layout_marginTop="40dp"
+        android:text="Si tienes alguna cualquier duda, solo envianos un mensaje..."
+        android:textSize="20dp"
+        android:textColor="@color/blanco"
+        />
+
+    <EditText
+        android:id="@+id/txtDuda"
+        style="@style/AppTheme.txtFondoOscuro"
+        android:backgroundTint="@color/blanco"
+        android:hint="Escribe tu duda aqui"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/btnDuda"
+        android:text="@string/enviar_mensaje"
+        style="@style/btn"
+        android:onClick="enviaDuda"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:text="o ingresa a nuestra seccion de FAQ'S :)"
+        android:textSize="20dp"
+        android:textColor="@color/blanco"
+        />
+
+    <Button
+        android:id="@+id/btnFaq"
+        android:text="FAQS"
+        style="@style/btn"
+        android:onClick="irAFAQS"
+        android:textSize="15sp"
+        />
+
+</LinearLayout>

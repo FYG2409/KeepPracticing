@@ -1,8 +1,26 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="tarjetasLayout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">160dp</item>
+        <item name="android:layout_columnWeight" tools:targetApi="lollipop">1</item>
+        <item name="android:elevation" tools:targetApi="lollipop">10dp</item>
+    </style>
+
+    <style name="imgTarjeta" parent="Base.Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">110dp</item>
+        <item name="android:contentDescription">"TODO"</item>
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/blanco</item>
+    </style>
+
 </resources>

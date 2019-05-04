@@ -2,6 +2,7 @@ package com.freakdeveloper.kep.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -45,13 +47,15 @@ public class PreguntasPorMateriaFragment extends Fragment {
     private int totalPreguntas=0, conta=0;
     int[] totales = new int[11];
     private Boolean todasMaterias = false;
+    private String materia;
 
     private LinearLayout razMatematico, algebra, geoTrigo,geoAnalitica, calDifIntegral, probaEstadistica, prodEscrita, comTextos, biologia, quimica, fisica, infinito;
+    private ImageView imgRazMatematico, imgAlgebra, imgGeoTrigo,imgGeoAnalitica, imgCalDifIntegral, imgProbaEstadistica, imgProdEscrita, imgComTextos, imgBiologia, imgQuimica, imgFisica, imgInfinito;
+
     //PARA FIREBASE
     private DatabaseReference databaseReference;
     private  static final String nodoPregunta="PreguntasActivity";
 
-    private String materia;
 
     public PreguntasPorMateriaFragment() {
         // Required empty public constructor
@@ -82,6 +86,8 @@ public class PreguntasPorMateriaFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_preguntas_por_materia, container, false);
         //PARA FIREBASE
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        //TARJETAS
         infinito = (LinearLayout) v.findViewById(R.id.infinito);
         razMatematico = (LinearLayout) v.findViewById(R.id.razMatematico);
         algebra = (LinearLayout) v.findViewById(R.id.algebra);
@@ -95,20 +101,36 @@ public class PreguntasPorMateriaFragment extends Fragment {
         quimica = (LinearLayout) v.findViewById(R.id.quimica);
         fisica = (LinearLayout) v.findViewById(R.id.fisica);
 
+        //IMAGENES
+        imgRazMatematico = (ImageView) v.findViewById(R.id.imgRazMatematico);
+        imgAlgebra = (ImageView) v.findViewById(R.id.imgAlgebra);
+        imgGeoTrigo = (ImageView) v.findViewById(R.id.imgGeoTrigo);
+        imgGeoAnalitica = (ImageView) v.findViewById(R.id.imgGeoAnalitica);
+        imgCalDifIntegral = (ImageView) v.findViewById(R.id.imgCalDifIntegral);
+        imgProbaEstadistica = (ImageView) v.findViewById(R.id.imgProbaEstadistica);
+        imgProdEscrita = (ImageView) v.findViewById(R.id.imgProdEscrita);
+        imgComTextos = (ImageView) v.findViewById(R.id.imgCompreTextos);
+        imgBiologia = (ImageView) v.findViewById(R.id.imgBiologia);
+        imgQuimica = (ImageView) v.findViewById(R.id.imgQuimica);
+        imgFisica = (ImageView) v.findViewById(R.id.imgFisica);
+        imgInfinito = (ImageView) v.findViewById(R.id.imgInfinito);
+
+
+
         conta = 0;
+
+
+        //PARA TARJETAS
 
         infinito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validaInfinito(infinito);
-            }
+                validaInfinito(infinito);    }
         });
 
         razMatematico.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                validaExistenPreguntas(razMatematico);
-            }
+            public void onClick(View v) {validaExistenPreguntas(razMatematico);    }
         });
 
         algebra.setOnClickListener(new View.OnClickListener() {
@@ -127,30 +149,22 @@ public class PreguntasPorMateriaFragment extends Fragment {
 
         geoAnalitica.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                validaExistenPreguntas(geoAnalitica);
-            }
+            public void onClick(View v) {validaExistenPreguntas(geoAnalitica);    }
         });
 
         calDifIntegral.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                validaExistenPreguntas(calDifIntegral);
-            }
+            public void onClick(View v) {validaExistenPreguntas(calDifIntegral);    }
         });
 
         probaEstadistica.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                validaExistenPreguntas(probaEstadistica);
-            }
+            public void onClick(View v) {validaExistenPreguntas(probaEstadistica);    }
         });
 
         prodEscrita.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                validaExistenPreguntas(prodEscrita);
-            }
+            public void onClick(View v) {validaExistenPreguntas(prodEscrita);    }
         });
 
         comTextos.setOnClickListener(new View.OnClickListener() {
@@ -180,6 +194,78 @@ public class PreguntasPorMateriaFragment extends Fragment {
                 validaExistenPreguntas(fisica);
             }
         });
+
+
+        //PARA IMAGENES
+
+        imgInfinito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validaInfinito(infinito);    }
+        });
+
+        imgRazMatematico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {validaExistenPreguntas(razMatematico);    }
+        });
+
+        imgAlgebra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validaExistenPreguntas(algebra);
+            }
+        });
+
+        imgGeoTrigo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {validaExistenPreguntas(geoTrigo);    }
+        });
+
+        imgGeoAnalitica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {validaExistenPreguntas(geoAnalitica);    }
+        });
+
+        imgCalDifIntegral.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {validaExistenPreguntas(calDifIntegral);    }
+        });
+
+        imgProbaEstadistica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {validaExistenPreguntas(probaEstadistica);    }
+        });
+
+        imgProdEscrita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {validaExistenPreguntas(prodEscrita);    }
+        });
+
+        imgComTextos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {validaExistenPreguntas(comTextos);    }
+        });
+
+        imgBiologia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {validaExistenPreguntas(biologia);    }
+        });
+
+        imgQuimica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validaExistenPreguntas(quimica);
+            }
+        });
+
+        imgFisica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validaExistenPreguntas(fisica);
+            }
+        });
+
+
 
         return v;
     }
