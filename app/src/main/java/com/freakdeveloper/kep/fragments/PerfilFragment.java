@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.freakdeveloper.kep.R;
 import com.freakdeveloper.kep.model.Persona;
+import com.freakdeveloper.kep.model.Ranking;
 import com.freakdeveloper.kep.model.Respuestas;
 import com.freakdeveloper.kep.views.AjustesActivity;
 import com.github.mikephil.charting.charts.BarChart;
@@ -100,6 +101,20 @@ public class PerfilFragment extends Fragment
     private Button btnAjustes;
     private Button btnEliminar;
 
+    //Ranking
+    private TextView Rankin;
+    private int[] totalest={0,0,0,0,0,0,0,0,0,0,0};
+    private int[] aciertost={0,0,0,0,0,0,0,0,0,0,0};
+    private ArrayList<Ranking> Datos=new ArrayList<>();
+    private ArrayList<String> id=new ArrayList<>();
+    public String Nick;
+    public int Lugar,Num;
+    float m;
+    private Float[] Punta;
+    private String[] ID;
+    private ArrayList<Float> Pun = new ArrayList<>();
+    private Ranking global=new Ranking();
+
 
     public PerfilFragment()
     {
@@ -133,12 +148,16 @@ public class PerfilFragment extends Fragment
         final View view = inflater.inflate(R.layout.fragment_perfil, container, false);
         //Trae NickName, Correo, Escuela Actual y Escuela a Ingresar
         //PARA FIREBASE
+        Nick="";
+        Num=0;
+        Lugar=0;
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
         btnAjustes = (Button) view.findViewById(R.id.btnAjust);
         btnEliminar = (Button) view.findViewById(R.id.btnDelete);
         Usu = (TextView) view.findViewById(R.id.NickN);
+        Rankin = (TextView) view.findViewById(R.id.rank);
         this.barChart = (BarChart)view.findViewById(R.id.barChar);
 
 
@@ -228,7 +247,6 @@ public class PerfilFragment extends Fragment
                     Porcentaje();
                     createChart();
 
-
                 }
 
             }
@@ -287,6 +305,108 @@ public class PerfilFragment extends Fragment
                 ad.show();
             }
         });
+        //trae RANKING
+        databaseReference.child(nodoRespuestas).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                        Respuestas respuestas = snapshot.getValue(Respuestas.class);
+                        String IDres=snapshot.getKey();
+                        int[] y=new int[2];
+                        aciertost[0]=respuestas.getAlgebra();
+                        totalest[0]=respuestas.getTotalAlgebra();
+                        aciertost[1]=respuestas.getBiologia();
+                        totalest[1]=respuestas.getTotalBiologia();
+                        aciertost[2]=respuestas.getCalculoDiferencialeIntegral();
+                        totalest[2]=respuestas.getTotalCalculoDiferencialeIntegral();
+                        aciertost[3]=respuestas.getComprensiondeTextos();
+                        totalest[3]=respuestas.getTotalComprensiondeTextos();
+                        aciertost[4]=respuestas.getFisica();
+                        totalest[4]=respuestas.getTotalFisica();
+                        aciertost[5]=respuestas.getGeometriaAnalitica();
+                        totalest[5]=respuestas.getTotalGeometriaAnalitica();
+                        aciertost[6]=respuestas.getGeometriayTrigonometria();
+                        totalest[6]=respuestas.getTotalGeometriayTrigonometria();
+                        aciertost[7]=respuestas.getProbabilidadyEstadistica();
+                        totalest[7]=respuestas.getTotalProbabilidadyEstadistica();
+                        aciertost[8]=respuestas.getProduccionEscrita();
+                        totalest[8]=respuestas.getTotalProduccionEscrita();
+                        aciertost[9]=respuestas.getQuimica();
+                        totalest[9]=respuestas.getTotalQuimica();
+                        aciertost[10]=respuestas.getRazonamientoMatematico();
+                        totalest[10]=respuestas.getTotalRazonamientoMatematico();
+
+                        //y=puntaje();
+
+                        for(int i=0;i<11;i++)
+                        {
+                            y[0]=y[0]+aciertost[i];
+                            y[1]=y[1]+totalest[i];
+                        }
+
+                        m=(float)y[0]/(float)y[1];
+
+                        Pun.add(m);
+                        id.add(IDres);
+
+                    }
+
+                    Punta=new Float[Pun.size()];
+                    ID=new String[id.size()];
+                    for(int i=0;i<Pun.size();i++)
+                    {
+                        Punta[i]=Pun.get(i);
+                        ID[i]=id.get(i);
+                    }
+
+                    float aux;
+                    String auxid;
+                    for (int i = 0; i < Punta.length - 1; i++) {
+                        for (int x = i + 1; x < Punta.length; x++) {
+                            if (Punta[x] > Punta[i]) {
+                                aux = Punta[i];
+                                auxid= ID[i];
+                                Punta[i]=Punta[x];
+                                ID[i]=ID[x];
+                                Punta[x]=aux;
+                                ID[x]=auxid;
+                            }
+                        }
+
+                    }
+
+                    //ordenarPuntaje();
+                    int n=0;
+                    for (int i=0;i<ID.length;i++)
+                    {
+                        n=i+1;
+                        if(ID[i].equals(user.getUid()))
+                        {
+                            Lugar=n;
+                            break;
+                        }
+                    }
+
+                    //Lugar=obtenLugar();
+                    Num=ID.length;
+                    global.setImagen(R.drawable.mex);
+                    global.setNickName(Nick);
+                    global.setPosicion(Lugar);
+                    global.setNumUsu(Num);
+                    Datos.add(global);
+
+                    Rankin.setText("Lugar: "+Lugar+" / "+Num);
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         return view;
     }

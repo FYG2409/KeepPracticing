@@ -67,7 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginTop="50sp"
-                    android:text="Lugar: 84/120"
+                    android:text="Lugar: ? / ? "
+                    android:id="@+id/rank"
                     android:textAlignment="center"
                     android:textSize="30sp" />
 
