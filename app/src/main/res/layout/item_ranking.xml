@@ -17,64 +17,54 @@
             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="90dp"
                 card_view:cardCornerRadius="4dp"
                 card_view:cardElevation="4dp"
                 card_view:cardUseCompatPadding="true">
-            <FrameLayout
-                android:id="@+id/todo"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:background="@color/color9"
-                android:padding="10dp"
-                android:elevation="40dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                >
-
-                <ImageView
-                    android:layout_width="261dp"
-                    android:layout_height="160dp"
-                    android:layout_gravity="bottom"
-                    android:id="@+id/imagen"
-                     />
-
-                <LinearLayout
+                <FrameLayout
+                    android:id="@+id/todo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="right">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="NickName: "
-                        android:id="@+id/nick"
-                        android:textSize="25dp"
-                        android:textColor="@color/blanco"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/pos"
-                        android:text="x"
-                        android:textSize="25dp"
-                        android:textColor="@color/blanco"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="/"
-                        android:textSize="25dp"
-                        android:textColor="@color/blanco"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/num"
-                        android:text="nume"
-                        android:textSize="25dp"
-                        android:textColor="@color/blanco"/>
-                </LinearLayout>
+                    android:layout_height="180dp"
+                    android:background="#9C9C9C"
+                    android:padding="5dp"
+                    android:elevation="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    >
 
-            </FrameLayout>
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TableRow>
+                            <TextView
+                                android:layout_width="80dp"
+                                android:layout_height="40dp"
+                                android:id="@+id/pos"
+                                android:text="Lugar"
+                                android:gravity="center"
+                                android:textSize="28dp"
+                                android:textColor="@color/negro"/>
+                            <TextView
+                                android:layout_width="140dp"
+                                android:layout_height="40dp"
+                                android:id="@+id/nick"
+                                android:gravity="center"
+                                android:text="NickName"
+                                android:textSize="28dp"
+                                android:textColor="@color/negro"/>
+                            <TextView
+                                android:layout_width="95dp"
+                                android:layout_height="40dp"
+                                android:id="@+id/num"
+                                android:gravity="center"
+                                android:text="%"
+                                android:textSize="28dp"
+                                android:textColor="@color/negro"/>
+                        </TableRow>
+                    </TableLayout>
+
+                </FrameLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>

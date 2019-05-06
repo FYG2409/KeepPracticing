@@ -34,10 +34,9 @@ public class RankingAdapterRecyclerView extends RecyclerView.Adapter<RankingAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos viewHolderDatos, int i)
     {
-        viewHolderDatos.Imagen.setImageResource(Datos.get(i).getImagen());
         viewHolderDatos.asignarNickName(Datos.get(i).getNickName());
         viewHolderDatos.asignarPosicion(Integer.toString(Datos.get(i).getPosicion()));
-        viewHolderDatos.asignarNumUsu(Integer.toString(Datos.get(i).getNumUsu()));
+        viewHolderDatos.asignarNumUsu(Float.toString(Datos.get(i).getNumUsu()));
     }
 
     @Override
@@ -51,14 +50,13 @@ public class RankingAdapterRecyclerView extends RecyclerView.Adapter<RankingAdap
     public class ViewHolderDatos extends RecyclerView.ViewHolder
     {
         TextView NickName,Posicion,NumUsu;
-        ImageView Imagen;
         public ViewHolderDatos(@NonNull View itemView)
         {
             super(itemView);
             NickName = itemView.findViewById(R.id.nick);
             Posicion = itemView.findViewById(R.id.pos);
             NumUsu= itemView.findViewById(R.id.num);
-            Imagen= itemView.findViewById(R.id.imagen);
+
         }
 
 

@@ -390,7 +390,7 @@ public class PerfilFragment extends Fragment
 
                     //Lugar=obtenLugar();
                     Num=ID.length;
-                    global.setImagen(R.drawable.mex);
+
                     global.setNickName(Nick);
                     global.setPosicion(Lugar);
                     global.setNumUsu(Num);

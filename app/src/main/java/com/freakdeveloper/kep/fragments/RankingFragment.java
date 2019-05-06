@@ -1,6 +1,7 @@
 package com.freakdeveloper.kep.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,12 +11,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.freakdeveloper.kep.R;
 import com.freakdeveloper.kep.adapter.RankingAdapterRecyclerView;
 import com.freakdeveloper.kep.model.Persona;
 import com.freakdeveloper.kep.model.Ranking;
 import com.freakdeveloper.kep.model.Respuestas;
+import com.freakdeveloper.kep.views.REscolarActivity;
+import com.freakdeveloper.kep.views.RGlobalActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,8 +45,10 @@ public class RankingFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     //VISTA
-    RecyclerView reclyclerViewR;
-    RecyclerView reclyclerViewRE;
+    private TextView LU,LU2,NU,NU2;
+    private ImageView IM,IM2;
+    private Button BU,BU2;
+
     //FIREBASE
 
     DatabaseReference databaseReference;
@@ -108,8 +116,14 @@ public class RankingFragment extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_ranking, container, false);
 
-        reclyclerViewR= (RecyclerView) v.findViewById(R.id.RVidR);
-        reclyclerViewR.setLayoutManager(new LinearLayoutManager(v.getContext() , LinearLayoutManager.VERTICAL , false));
+        LU=(TextView) v.findViewById(R.id.lugra);
+        //NU=(TextView) v.findViewById(R.id.numra);
+        LU2=(TextView) v.findViewById(R.id.lug2ra);
+        //NU2=(TextView) v.findViewById(R.id.num2ra);
+        IM=(ImageView) v.findViewById(R.id.imagen);
+        IM2=(ImageView) v.findViewById(R.id.imagen2);
+        BU=(Button) v.findViewById(R.id.btnG);
+        BU2=(Button) v.findViewById(R.id.btnE);
 
 
 
@@ -121,6 +135,10 @@ public class RankingFragment extends Fragment {
         Num2=0;
         Lugar=0;
         Lugar2=0;
+
+
+        IM.setImageResource(R.drawable.mex);
+        IM2.setImageResource(R.drawable.gorro);
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -137,7 +155,7 @@ public class RankingFragment extends Fragment {
                             Nick=persona.getNickName();
                             Nick2=Nick;
                             Escuela=persona.getEscingresar();
-                               break;
+                            break;
                         }
 
                     }
@@ -300,26 +318,22 @@ public class RankingFragment extends Fragment {
 
                     //Lugar=obtenLugar();
                     Num=ID.length;
-                    global.setImagen(R.drawable.mex);
-                    global.setNickName(Nick);
-                    global.setPosicion(Lugar);
-                    global.setNumUsu(Num);
-                    Datos.add(global);
-
                     Num2=ID3.length;
-                    escolar.setImagen(R.drawable.gorro);
-                    escolar.setNickName(Nick2);
-                    escolar.setPosicion(Lugar2);
-                    escolar.setNumUsu(Num2);
-                    Datos.add(escolar);
+                    global=new Ranking("0",Lugar,Num);
+                    escolar=new Ranking("0",Lugar2,Num2);
+                    int Lu = Lugar;
+                    int Lu2= Lugar2;
+                    int Nu= Num;
+                    int Nu2= Num2;
+                    //manda nulos al desplegar
+                    Vistas(Lu , Nu , Lu2 , Nu2);
 
-
-                    RankingAdapterRecyclerView Adap = new RankingAdapterRecyclerView(Datos);
-                    reclyclerViewR.setAdapter(Adap);
+                    //no son nulos antes de desplegar
+                    Toast.makeText(getContext(), "lugar"+Lugar+"num"+Num, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "lugar2"+Lugar2+"num2"+Num2, Toast.LENGTH_SHORT).show();
 
                 }
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -327,9 +341,35 @@ public class RankingFragment extends Fragment {
             }
         });
 
+
+
+        BU.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), RGlobalActivity.class);
+                startActivity(intent);
+            }
+        });
+        BU2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), REscolarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         return v;
     }
 
+    private void Vistas(int Lu1 , int num11 , int Lu2 , int num22)
+    {
+        this.LU.setText(Lu1 + "/" + num11);
+
+        this.LU2.setText(Lu2 + "/" + num22);
+
+    }
 
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.RegistroEnciclopediaActivity"></activity>
+        <activity android:name=".views.RGlobalActivity"></activity>
+        <activity android:name=".views.REscolarActivity" />
+        <activity android:name=".views.RegistroEnciclopediaActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,17 +32,12 @@
         <activity android:name=".views.RegistrarFaqsActivity" />
         <activity android:name=".views.RegistroActivity" />
         <activity android:name=".views.RegistroCarreraActivity" />
-        <activity android:name=".views.RegistroPreguntaActivity" />
-        <!--no esta agregado en strings "@string/title_activity_navigation_drawer"  -->
+        <activity android:name=".views.RegistroPreguntaActivity" /> <!-- no esta agregado en strings "@string/title_activity_navigation_drawer" -->
         <activity
-
             android:name=".views.NavigationDrawerActivity"
             android:label="title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
-
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".views.DudaActivity"></activity>
-
+        <activity android:name=".views.DudaActivity" />
     </application>
 
 </manifest>
